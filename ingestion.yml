@@ -1,0 +1,9 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: ingestion-service
+  data:
+    mongodb:
+      uri: mongodb://mongoadmin:mongopass@mongodb:27017/rag_db?authSource=admin

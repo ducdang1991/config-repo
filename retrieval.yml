@@ -1,0 +1,11 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: retrieval-service
+  datasource:
+    url: jdbc:postgresql://postgres:5432/rag_db
+    username: rag_user
+    password: rag_pass
+    driver-class-name: org.postgresql.Driver

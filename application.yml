@@ -16,6 +16,12 @@ spring:
 
 eureka:
   client:
+    # registerWithEureka: true
+    # fetchRegistry: true
+    # enabled: true
+    # # Retry failed registrations instead of crashing
+    # initialInstanceInfoReplicationIntervalSeconds: 10
+    # instanceInfoReplicationIntervalSeconds: 10
     service-url:
       defaultZone: http://admin:admin@service-registry:8761/eureka/
   instance:

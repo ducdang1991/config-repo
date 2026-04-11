@@ -7,3 +7,10 @@ spring:
   data:
     mongodb:
       uri: mongodb://mongoadmin:mongopass@mongodb:27017/rag_db?authSource=admin
+
+rag:
+  chunking:
+    strategy: RECURSIVE
+    chunk-size: 512
+    chunk-overlap: 50
+    max-chunks: 500

@@ -1,5 +1,5 @@
 server:
-  port: 8084
+  port: 8085
 
 spring:
   application:
@@ -8,4 +8,27 @@ spring:
     uri: bolt://neo4j:7687
     authentication:
       username: neo4j
-      password: password
+      password: ""
+  kafka:
+    bootstrap-servers: kafka:29092
+    consumer:
+      group-id: graph-group
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "com.rag.common.event,com.rag.common.dto,java.util,java.lang"
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY:sk-test}
+      chat:
+        model: gpt-3.5-turbo
+
+resilience4j:
+  retry:
+    instances:
+      nerRetry:
+        max-attempts: 2
+        wait-duration: 1s

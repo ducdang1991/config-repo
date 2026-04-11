@@ -8,6 +8,14 @@ spring:
     mongodb:
       uri: mongodb://mongoadmin:mongopass@mongodb:27017/rag_db?authSource=admin
 
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:admin@service-registry:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 10
+
 rag:
   chunking:
     strategy: RECURSIVE

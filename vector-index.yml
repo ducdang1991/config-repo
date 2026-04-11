@@ -1,9 +1,9 @@
 server:
-  port: 8084
+  port: 8086
 
 spring:
   application:
-    name: retrieval-service
+    name: vector-index-service
   datasource:
     url: jdbc:postgresql://postgres:5432/rag_db
     username: rag_user

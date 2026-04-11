@@ -4,3 +4,19 @@ server:
 spring:
   application:
     name: embedding-service
+
+resilience4j:
+  retry:
+    instances:
+      embeddingRetry:
+        max-attempts: 3
+        wait-duration: 2s
+        exponential-backoff-multiplier: 2
+        retry-exceptions:
+          - org.springframework.web.client.ResourceAccessException
+  circuitbreaker:
+    instances:
+      embeddingCB:
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 30s
+        sliding-window-size: 10

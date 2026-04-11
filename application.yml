@@ -23,7 +23,7 @@ eureka:
     # initialInstanceInfoReplicationIntervalSeconds: 10
     # instanceInfoReplicationIntervalSeconds: 10
     service-url:
-      defaultZone: http://admin:admin@service-registry:8761/eureka/
+      defaultZone: http://service-registry:8761/eureka/
   instance:
     prefer-ip-address: true
     lease-renewal-interval-in-seconds: 10

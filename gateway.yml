@@ -8,21 +8,25 @@ spring:
     gateway:
       routes:
         - id: ingestion
-          uri: http://ingestion-service:8082
+          uri: lb://ingestion-service
           predicates:
             - Path=/api/v1/documents/**
         - id: query
-          uri: http://query-orchestrator:8083
+          uri: lb://query-orchestrator
           predicates:
             - Path=/api/v1/query/**
         - id: retrieval
-          uri: http://retrieval-service:8084
+          uri: lb://retrieval-service
           predicates:
             - Path=/api/v1/retrieval/**
         - id: graph
-          uri: http://graph-service:8085
+          uri: lb://graph-service
           predicates:
             - Path=/api/v1/graph/**
+        - id: llm-proxy
+          uri: lb://llm-proxy
+          predicates:
+            - Path=/api/v1/llm/**
       default-filters:
         - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
       globalcors:

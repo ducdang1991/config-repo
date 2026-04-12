@@ -1,6 +1,60 @@
 server:
-  port: 8086
+  port: 8084
 
 spring:
   application:
     name: query-orchestrator
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      chat.options:
+        model: gpt-4o-mini
+        temperature: 0.7
+  data:
+    redis:
+      host: redis
+      port: 6379
+    mongodb:
+      uri: mongodb://mongo:27017/ragdb
+  cloud:
+    discovery:
+      client:
+        simple:
+          instances:
+            retrieval-service:
+              - host: retrieval-service
+                port: 8086
+            graph-service:
+              - host: graph-service
+              - port: 8083
+
+feign:
+  client:
+    config:
+      default:
+        readTimeout: 10000
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      retrieval-cb:
+        failureRateThreshold: 50
+        slidingWindowSize: 10
+        waitDurationInOpenState: 30s
+        minimumNumberOfCalls: 3
+      graph-cb:
+        failureRateThreshold: 50
+        slidingWindowSize: 10
+        waitDurationInOpenState: 30s
+        minimumNumberOfCalls: 3
+      llm-cb:
+        failureRateThreshold: 50
+        slidingWindowSize: 10
+        waitDurationInOpenState: 60s
+        minimumNumberOfCalls: 3
+
+app:
+  cache:
+    query-ttl-seconds: 300
+  retrieval:
+    top-k: 10

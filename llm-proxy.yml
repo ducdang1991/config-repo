@@ -1,0 +1,32 @@
+server:
+  port: 8087
+
+spring:
+  application:
+    name: llm-proxy
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      chat.options:
+        model: gpt-4o-mini
+        temperature: 0.7
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://keycloak:8080/realms/rag/protocol/openid-connect/certs
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      openai-cb:
+        failureRateThreshold: 50
+        slidingWindowSize: 10
+        waitDurationInOpenState: 60s
+        minimumNumberOfCalls: 2
+  ratelimiter:
+    instances:
+      openai-rl:
+        limitForPeriod: 60
+        limitRefreshPeriod: PT1M
+        timeoutDuration: PT5S

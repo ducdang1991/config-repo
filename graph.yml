@@ -24,7 +24,7 @@ spring:
     openai:
       api-key: ${OPENAI_API_KEY:sk-test}
       chat:
-        model: gpt-3.5-turbo
+        model: gpt-5-nano
 
 resilience4j:
   retry:

@@ -26,6 +26,10 @@ spring:
       chat:
         model: gpt-5-nano
 
+feign:
+  httpclient:
+    enabled: true
+
 resilience4j:
   retry:
     instances:

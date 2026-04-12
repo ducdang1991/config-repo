@@ -16,6 +16,10 @@ spring:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 
+feign:
+  httpclient:
+    enabled: true
+
 resilience4j:
   retry:
     instances:

@@ -4,6 +4,12 @@ server:
 spring:
   application:
     name: query-orchestrator
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://keycloak:8080/realms/rag/protocol/openid-connect/certs
+          issuer-uri: http://localhost:8180/realms/rag
   ai:
     openai:
       api-key: ${OPENAI_API_KEY}

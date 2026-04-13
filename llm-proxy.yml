@@ -15,6 +15,7 @@ spring:
       resourceserver:
         jwt:
           jwk-set-uri: http://keycloak:8080/realms/rag/protocol/openid-connect/certs
+          issuer-uri: http://localhost:8180/realms/rag
 
 resilience4j:
   circuitbreaker:

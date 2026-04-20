@@ -27,6 +27,10 @@ spring:
           uri: lb://llm-proxy
           predicates:
             - Path=/api/v1/llm/**
+        - id: fast-graphrag
+          uri: lb://fast-graphrag-service
+          predicates:
+            - Path=/api/v1/fast-graphrag/**
       default-filters:
         - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
       globalcors:

@@ -1,0 +1,33 @@
+server:
+  port: 8089
+
+app:
+  name: fast-graphrag-service
+  data-dir: /app/data
+  grag:
+    pool-max-size: 32
+    idle-eviction-seconds: 1800
+    ppr:
+      iteration-cap: 32
+      default-budget-ms: 300
+  kafka:
+    bootstrap-servers: kafka:29092
+    consumer-group: fast-graphrag-group
+    topic-chunks-embedded: chunks-embedded
+    topic-graph-updated: graph-updated
+  keycloak:
+    jwks-url: http://keycloak:8080/realms/rag/protocol/openid-connect/certs
+    issuer: http://keycloak:8080/realms/rag
+  redis:
+    host: redis
+    port: 6379
+  eureka:
+    url: http://service-registry:8761/eureka
+    user: admin
+    password: admin
+  openai:
+    api-key: ${OPENAI_API_KEY:sk-test}
+    extraction-model: gpt-4o-mini
+    embedding-model: text-embedding-3-small
+  otlp:
+    endpoint: http://jaeger:4318

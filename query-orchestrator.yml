@@ -64,3 +64,11 @@ app:
     query-ttl-seconds: 300
   retrieval:
     top-k: 10
+  graph:
+    backend: legacy   # values: legacy | fast-graphrag
+
+resilience4j:
+  timelimiter:
+    instances:
+      fast-graphrag-cb:
+        timeoutDuration: 500ms

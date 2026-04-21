@@ -17,7 +17,7 @@ app:
     topic-graph-updated: graph-updated
   keycloak:
     jwks-url: http://keycloak:8080/realms/rag/protocol/openid-connect/certs
-    issuer: http://keycloak:8080/realms/rag
+    issuer: http://localhost:8180/realms/rag
   redis:
     host: redis
     port: 6379

@@ -48,10 +48,6 @@ resilience4j:
         slidingWindowSize: 10
         waitDurationInOpenState: 30s
         minimumNumberOfCalls: 3
-
-rag:
-  graph:
-    backend: fast-graphrag
       graph-cb:
         failureRateThreshold: 50
         slidingWindowSize: 10
@@ -66,6 +62,10 @@ rag:
     instances:
       fast-graphrag-cb:
         timeoutDuration: 2000ms
+
+rag:
+  graph:
+    backend: fast-graphrag
 
 app:
   cache:

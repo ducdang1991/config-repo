@@ -4,6 +4,9 @@ server:
 spring:
   application:
     name: query-orchestrator
+  jpa:
+    hibernate:
+      ddl-auto: none
   security:
     oauth2:
       resourceserver:

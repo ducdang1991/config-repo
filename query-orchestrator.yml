@@ -4,9 +4,12 @@ server:
 spring:
   application:
     name: query-orchestrator
-  jpa:
-    hibernate:
-      ddl-auto: none
+  data:
+    mongodb:
+      uri: ${SPRING_DATA_MONGODB_URI:mongodb://mongoadmin:mongopass@mongodb:27017/ragdb?authSource=admin}
+    redis:
+      host: redis
+      port: 6379
   security:
     oauth2:
       resourceserver:
@@ -19,14 +22,6 @@ spring:
       chat.options:
         model: gpt-4o-mini
         temperature: 0.7
-  data:
-    redis:
-      host: redis
-      port: 6379
-  jpa:
-    hibernate:
-      naming:
-        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
   cloud:
     discovery:
       client:

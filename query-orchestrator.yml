@@ -4,6 +4,10 @@ server:
 spring:
   application:
     name: query-orchestrator
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+      - org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
   data:
     mongodb:
       uri: ${SPRING_DATA_MONGODB_URI:mongodb://mongoadmin:mongopass@mongodb:27017/ragdb?authSource=admin}

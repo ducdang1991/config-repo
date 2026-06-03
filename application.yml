@@ -45,10 +45,22 @@ management:
         enabled: true
   tracing:
     sampling:
-      probability: 0.1
+      probability: 1.0
   otlp:
     tracing:
       endpoint: http://jaeger:4318/v1/traces
+
+otel:
+  sdk:
+    disabled: false
+  exporter:
+    otlp:
+      endpoint: http://jaeger:4318
+  traces:
+    exporter: otlp
+  metric:
+    export:
+      interval: 60000
 
 spring.application.name: ${SERVICE_NAME:unknown}
 logging:

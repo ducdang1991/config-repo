@@ -31,6 +31,11 @@ spring:
           uri: lb://fast-graphrag-service
           predicates:
             - Path=/api/v1/fast-graphrag/**
+        # NEW: AG-UI agent stream endpoint
+        - id: agent-stream
+          uri: lb://query-orchestrator
+          predicates:
+            - Path=/api/v1/agent/**
       default-filters:
         - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
       globalcors:

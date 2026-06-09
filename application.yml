@@ -47,24 +47,9 @@ management:
       percentiles-histogram:
         http.server.requests: true
   tracing:
+    # OTEL Java agent controls sampling via OTEL_TRACES_SAMPLER env var.
+    # Spring Boot tracing enabled so Micrometer can integrate with agent spans.
     enabled: true
-    sampling:
-      probability: 1.0
-  otlp:
-    tracing:
-      endpoint: http://jaeger:4318/v1/traces
-
-otel:
-  sdk:
-    disabled: false
-  exporter:
-    otlp:
-      endpoint: http://jaeger:4318
-  traces:
-    exporter: otlp
-  metric:
-    export:
-      interval: 60000
 
 spring.application.name: ${SERVICE_NAME:unknown}
 logging:

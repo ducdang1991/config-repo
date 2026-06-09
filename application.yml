@@ -67,3 +67,6 @@ spring.application.name: ${SERVICE_NAME:unknown}
 logging:
   pattern:
     correlation: "[%X{traceId}/%X{spanId}] "
+  level:
+    io.opentelemetry: WARN
+    io.grpc: WARN
